@@ -12,6 +12,7 @@ export default class Game {
     this.canvas.style.height = height + "px";
     this.canvas.style.outline = "none";
     this.canvas.style.position = "relative";
+    this.canvas.style.cursor = "default";
     this.canvas.width = width;
     this.canvas.height = height;
     this.width = width;

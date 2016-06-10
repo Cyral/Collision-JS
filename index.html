@@ -10,22 +10,24 @@
         body {
             margin: 0px;
             background-color: #333;
+            font-family: "Arial";
+            color: #FFF;
+            text-align: center;
         }
 
         #game {
             margin: 32px;
-            text-align: center;
         }
     </style>
 </head>
 
 <body>
+    <h1>Collision Detection</h3>
+    <p>Player 1: WASD, Player 2: Arrow Keys, Draw: Left click, Erase: Right click</p>
     <div id="game"></div>
     <script>
         (function() {
-            var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-            var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-            var game = new CollisionGame("game", Math.min(width - 64, 1440), Math.min(height - 64, 800));
+            var game = new CollisionGame("game", 1216, 704);
         })();
     </script>
 </body>

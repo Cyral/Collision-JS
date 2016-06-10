@@ -6,6 +6,10 @@ const TILE_SIZE = 32;
 const SOLID_COLOR = '#b4b4b4';
 const LEFT_MOUSE = 0,
   RIGHT_MOUSE = 2;
+const CollisionDirection = {
+  VERTICAL: 1,
+  HORIZONTAL: 2
+};
 
 export default class Level {
   constructor(width, height) {
@@ -28,7 +32,7 @@ export default class Level {
 
     // Add players
     var me = new Player(this, 'red', new Point(TILE_SIZE * 6, TILE_SIZE * 6));
-    me.controllable = true; // Control this player with the keyboard
+    me.useWASD = true; // Control this player with WASD and the other with the arrow keys
     this.players.push(me);
     this.players.push(new Player(this, 'green', new Point(TILE_SIZE * 2, TILE_SIZE * 2)));
   }
@@ -63,7 +67,7 @@ export default class Level {
       }
     }
 
-    // Draw playrs
+    // Draw players
     for (var player of this.players) {
       player.draw(renderer, delta);
     }
