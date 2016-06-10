@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="./dist/Game.js">
+    </script>
+    <meta charset="utf-8">
+    <title>Collision Detection</title>
+    <style>
+        body {
+            margin: 0px;
+            background-color: #333;
+        }
+
+        #game {
+            margin: 32px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="game"></div>
+    <script>
+        (function() {
+            var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+            var game = new CollisionGame("game", Math.min(width - 64, 1440), Math.min(height - 64, 800));
+        })();
+    </script>
+</body>
+
+</html>
