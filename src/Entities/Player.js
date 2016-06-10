@@ -68,7 +68,7 @@ export default class Player {
     // Collisions are resolved on each axis independently.
     // The velocity is then added to the position, which makes the position increase as the velocity is > 0, and decreases when it is < 0.
     // By using acceleration, velocity, and position, we can get a smooth movement that takes time to speed up and slow down.
-    this.position.x = this.position.x + this.velocity.x;
+    this.position.x += this.velocity.x;
     // Now that the player's position has been updated based on the acceleration and velocity, it may be intersecting a block or player and must be resolved.
     // Record the position before handling collision.
     var lastX = this.position.x;
@@ -77,7 +77,7 @@ export default class Player {
       this.handleCollisions(CollisionDirection.HORIZONTAL);
 
     // Do the same for the Y-Axis
-    this.position.y = this.position.y + this.velocity.y;
+    this.position.y += this.velocity.y;
     var lastY = this.position.y;
     if (this.position.y !== this.previousPosition.y)
       this.handleCollisions(CollisionDirection.VERTICAL);
