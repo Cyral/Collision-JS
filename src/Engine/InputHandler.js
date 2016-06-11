@@ -6,29 +6,29 @@ export default class InputHandler {
     this.container = container;
     // Hook up events
     this._keystate = {};
-    var _self = this;
-    this.container.onkeydown = function(e) {
-      _self._keystate[e.keyCode ? e.keyCode : e.charCode] = true;
+    
+    this.container.onkeydown = e => {
+      this._keystate[e.keyCode ? e.keyCode : e.charCode] = true;
     };
-    this.container.onkeyup = function(e) {
-      _self._keystate[e.keyCode ? e.keyCode : e.charCode] = false;
+    this.container.onkeyup = e => {
+      this._keystate[e.keyCode ? e.keyCode : e.charCode] = false;
     };
 
     this._mousestate = {};
     this._mousepos = new Point(0, 0);
-    this.container.onmousedown = function(e) {
-      _self._mousestate[e.button] = true;
-      _self._mousepos = new Point(e.offsetX, _self.height - e.offsetY);
+    this.container.onmousedown = e => {
+      this._mousestate[e.button] = true;
+      this._mousepos = new Point(e.offsetX, this.height - e.offsetY);
     };
-    this.container.onmouseup = function(e) {
-      _self._mousestate[e.button] = false;
-      _self._mousepos = new Point(e.offsetX, _self.height - e.offsetY);
+    this.container.onmouseup = e => {
+      this._mousestate[e.button] = false;
+      this._mousepos = new Point(e.offsetX, this.height - e.offsetY);
     };
-    this.container.oncontextmenu = function(e) {
+    this.container.oncontextmenu = e => {
       e.preventDefault();
     };
-    this.container.onmousemove = function(e) {
-      _self._mousepos = new Point(e.offsetX, _self.height - e.offsetY);
+    this.container.onmousemove = e => {
+      this._mousepos = new Point(e.offsetX, this.height - e.offsetY);
     };
   }
   getMousePosition() {
