@@ -1,4 +1,5 @@
 var gulp = require("gulp");
+var gutil = require("gulp-util");
 var uglify = require("gulp-uglify");
 var source = require("vinyl-source-stream");
 var buffer = require("vinyl-buffer");
@@ -20,7 +21,7 @@ function compile(watch) {
   function rebundle() {
     bundler.bundle()
       .on("error", function(err) {
-        console.error(err);
+        gutil.log(err);
         this.emit("end");
       })
       .pipe(source("Game.js"))
@@ -31,10 +32,14 @@ function compile(watch) {
 
   if (watch) {
     bundler.on("update", function() {
-      console.log("Building...");
       rebundle();
     });
   }
+
+  bundler.on("log", function(message) {
+    gutil.log("Building...");
+    gutil.log(message);
+  });
 
   rebundle();
 }

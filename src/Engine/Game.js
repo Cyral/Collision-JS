@@ -35,22 +35,21 @@ export default class Game {
         };
     })();
 
-    var _self = this;
     var lastFrame = Date.now();
 
-    function animloop() {
+    const animloop = () => {
       requestAnimationFrame(animloop);
 
       var now = Date.now();
       var delta = (now - lastFrame) / 1000;
 
-      _self.context.fillStyle = "#FFF";
-      _self.context.fillRect(0, 0, _self.width, _self.width);
+      this.context.fillStyle = "#FFF";
+      this.context.fillRect(0, 0, this.width, this.width);
 
-      if (_self.update)
-        _self.update(_self.input, delta);
-      if (_self.draw)
-        _self.draw(_self.renderer, delta);
+      if (this.update)
+        this.update(this.input, delta);
+      if (this.draw)
+        this.draw(this.renderer, delta);
       lastFrame = now;
     }
     animloop();
