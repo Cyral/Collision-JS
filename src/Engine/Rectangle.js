@@ -1,4 +1,4 @@
-export default class thisngle {
+export default class Rectangle {
   constructor(x, y, width, height) {
     this.x = x;
     this.y = y;
